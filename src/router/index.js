@@ -5,16 +5,38 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    path: "/syllogos",
+    name: "Syllogos",
+    component: () => import("../views/Syllogos.vue")
+  },
+  {
+    path: "/katigories/:tmima",
+    name: "katigories",
+    props: true,
+    component: () => import("../views/katigories.vue"),
+    children: [
+      { path: 'anakoinoseis', name: 'anakoinoseis', props: true, component: () => import("../views/Ypokatigories/Anakoinoseis.vue")},
+      { path: 'roster', name: 'roster', props: true, component: () => import("../views/Ypokatigories/RosterView.vue")},
+      { path: 'vathmologia', name: 'vathmologia', props: true, component: () => import("../views/Ypokatigories/Vathmologia.vue")}
+    ]
+  },
+  {
+    path: "/epikoinonia",
+    name: "Epikoinonia",
+    component: () => import("../views/Epikoinonia.vue")
+  },
+  {
+    path: "/signup",
+    name: "signup",
+    component: () => import("../views/Login/signup.vue")
+  },
+  {
+    path: "/signin",
+    name: "signin",
+    component: () => import("../views/Login/signin.vue")
   }
 ];
 
